@@ -7,11 +7,11 @@ interface HeroProps {
 
 const Hero = ({ onSearch }: HeroProps) => {
   const popularIngredients = [
-    "Chicken", 
-    "Rice", 
-    "Potato", 
-    "Pasta", 
-    "Beef"
+    "Breakfast", 
+    "Lunch", 
+    "Dinner", 
+    "Dessert", 
+    "Vegetarian"
   ];
 
   const handlePopularClick = (ingredient: string) => {
@@ -19,10 +19,10 @@ const Hero = ({ onSearch }: HeroProps) => {
   };
 
   return (
-    <section className="relative bg-dark text-white overflow-hidden">
+    <section className="relative bg-dark text-white overflow-hidden h-screen flex items-center">
       <div className="absolute inset-0 bg-gradient-to-r from-dark to-black opacity-80"></div>
-      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')" }}></div>
-      <div className="container mx-auto px-4 py-16 relative z-10">
+      <div className="absolute inset-0 bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')" }}></div>
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div 
           className="max-w-2xl"
           initial={{ opacity: 0, y: 20 }}

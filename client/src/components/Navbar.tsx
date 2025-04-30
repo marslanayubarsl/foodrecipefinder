@@ -1,11 +1,37 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { Moon, Sun } from "lucide-react";
 
 const Navbar = () => {
   const [location] = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+
+  // Handle scroll for transparent navbar
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Handle theme toggle
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [darkMode]);
+
+  const toggleTheme = () => {
+    setDarkMode(!darkMode);
+  };
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -19,8 +45,8 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="bg-white shadow-md sticky top-0 z-50">
-      <div className="container mx-auto px-4 py-3">
+    <nav className={`${scrolled ? 'bg-white/90 backdrop-blur-sm shadow-md' : 'bg-transparent'} transition-all duration-300 sticky top-0 z-50`}>
+      <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           <div 
             onClick={() => window.location.href = '/'}
@@ -46,12 +72,17 @@ const Navbar = () => {
                 {link.name}
               </div>
             ))}
-            <Button 
-              className="rounded-full font-heading font-medium"
-              onClick={() => window.location.href = '/favorites'}
-            >
-              <i className="fas fa-heart mr-1"></i> Favorites
-            </Button>
+            <div className="flex space-x-4 items-center">
+              <motion.button
+                onClick={toggleTheme}
+                className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                aria-label="Toggle theme"
+              >
+                {darkMode ? <Sun size={18} /> : <Moon size={18} />}
+              </motion.button>
+            </div>
           </div>
           
           {/* Mobile menu button */}
