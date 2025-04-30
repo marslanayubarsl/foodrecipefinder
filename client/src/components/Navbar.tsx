@@ -47,18 +47,28 @@ const Navbar = () => {
   return (
     <motion.nav 
       className={`${scrolled ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm shadow-md' : 'bg-transparent'} transition-all duration-300 sticky top-0 z-50`}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ 
+        duration: 0.6, 
+        ease: [0.22, 1, 0.36, 1],
+        opacity: { duration: 0.5 }
+      }}
     >
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           <motion.div 
             onClick={() => window.location.href = '/'}
             className="flex items-center space-x-2 cursor-pointer"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            initial={{ opacity: 0, scale: 0.8, y: -20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ 
+              duration: 0.6, 
+              delay: 0.2,
+              ease: [0.22, 1, 0.36, 1]
+            }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             <svg className="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
@@ -70,9 +80,9 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <motion.div 
             className="hidden md:flex items-center space-x-8"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
           >
             {navLinks.map((link, index) => (
               <motion.div 
@@ -81,11 +91,16 @@ const Navbar = () => {
                 className={`font-heading font-medium transition-colors duration-200 cursor-pointer ${
                   location === link.path ? "text-primary" : "hover:text-primary"
                 }`}
-                initial={{ opacity: 0, y: -20 }}
+                initial={{ opacity: 0, y: -30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.3 + (index * 0.1) }}
-                whileHover={{ y: -2 }}
-                whileTap={{ y: 0 }}
+                transition={{ 
+                  type: "spring", 
+                  stiffness: 300, 
+                  damping: 20, 
+                  delay: 0.4 + (index * 0.1) 
+                }}
+                whileHover={{ y: -4, color: "#ff6b6b" }}
+                whileTap={{ y: 0, scale: 0.95 }}
               >
                 {link.name}
               </motion.div>
@@ -94,8 +109,16 @@ const Navbar = () => {
               <motion.button
                 onClick={toggleTheme}
                 className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
+                initial={{ opacity: 0, rotate: -180, scale: 0.5 }}
+                animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: 0.6,
+                  type: "spring", 
+                  stiffness: 200 
+                }}
+                whileHover={{ scale: 1.2, rotate: 15 }}
+                whileTap={{ scale: 0.8 }}
                 aria-label="Toggle theme"
               >
                 {darkMode ? <Sun size={18} /> : <Moon size={18} />}
@@ -108,9 +131,16 @@ const Navbar = () => {
             className="md:hidden text-dark dark:text-white focus:outline-none" 
             onClick={toggleMobileMenu}
             aria-label="Toggle mobile menu"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
+            initial={{ opacity: 0, scale: 0.6 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ 
+              type: "spring",
+              stiffness: 260,
+              damping: 20,
+              delay: 0.5 
+            }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -122,10 +152,14 @@ const Navbar = () => {
         {mobileMenuOpen && (
           <motion.div 
             className="md:hidden pt-4 pb-2"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
+            initial={{ opacity: 0, height: 0, y: -20 }}
+            animate={{ opacity: 1, height: "auto", y: 0 }}
+            exit={{ opacity: 0, height: 0, y: -20 }}
+            transition={{ 
+              height: { duration: 0.4 },
+              opacity: { duration: 0.3 },
+              y: { duration: 0.3, ease: "easeOut" }
+            }}
           >
             {navLinks.map((link, index) => (
               <motion.div 
@@ -137,9 +171,16 @@ const Navbar = () => {
                   window.location.href = link.path;
                   setMobileMenuOpen(false);
                 }}
-                initial={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: 0.1 + (index * 0.1) }}
+                transition={{ 
+                  type: "spring",
+                  damping: 25, 
+                  stiffness: 300,
+                  delay: 0.1 + (index * 0.08)
+                }}
+                whileHover={{ x: 5 }}
+                whileTap={{ scale: 0.95 }}
               >
                 {link.name}
               </motion.div>
@@ -157,8 +198,16 @@ const Navbar = () => {
               <motion.button
                 onClick={toggleTheme}
                 className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
+                initial={{ opacity: 0, rotate: -180, scale: 0.5 }}
+                animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: 0.6,
+                  type: "spring", 
+                  stiffness: 200 
+                }}
+                whileHover={{ scale: 1.2, rotate: 15 }}
+                whileTap={{ scale: 0.8 }}
                 aria-label="Toggle theme"
               >
                 {darkMode ? <Sun size={18} /> : <Moon size={18} />}
