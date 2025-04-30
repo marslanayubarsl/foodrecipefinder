@@ -45,32 +45,50 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className={`${scrolled ? 'bg-white/90 backdrop-blur-sm shadow-md' : 'bg-transparent'} transition-all duration-300 sticky top-0 z-50`}>
+    <motion.nav 
+      className={`${scrolled ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm shadow-md' : 'bg-transparent'} transition-all duration-300 sticky top-0 z-50`}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+    >
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
-          <div 
+          <motion.div 
             onClick={() => window.location.href = '/'}
             className="flex items-center space-x-2 cursor-pointer"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
           >
             <svg className="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
               <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd"></path>
             </svg>
             <span className="font-heading font-bold text-xl text-primary">Recipe Finder</span>
-          </div>
+          </motion.div>
           
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <div 
+          <motion.div 
+            className="hidden md:flex items-center space-x-8"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            {navLinks.map((link, index) => (
+              <motion.div 
                 key={link.path}
                 onClick={() => window.location.href = link.path}
                 className={`font-heading font-medium transition-colors duration-200 cursor-pointer ${
                   location === link.path ? "text-primary" : "hover:text-primary"
                 }`}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: 0.3 + (index * 0.1) }}
+                whileHover={{ y: -2 }}
+                whileTap={{ y: 0 }}
               >
                 {link.name}
-              </div>
+              </motion.div>
             ))}
             <div className="flex space-x-4 items-center">
               <motion.button
@@ -83,18 +101,21 @@ const Navbar = () => {
                 {darkMode ? <Sun size={18} /> : <Moon size={18} />}
               </motion.button>
             </div>
-          </div>
+          </motion.div>
           
           {/* Mobile menu button */}
-          <button 
-            className="md:hidden text-dark focus:outline-none" 
+          <motion.button 
+            className="md:hidden text-dark dark:text-white focus:outline-none" 
             onClick={toggleMobileMenu}
             aria-label="Toggle mobile menu"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
-          </button>
+          </motion.button>
         </div>
         
         {/* Mobile menu */}
@@ -106,8 +127,8 @@ const Navbar = () => {
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
           >
-            {navLinks.map((link) => (
-              <div 
+            {navLinks.map((link, index) => (
+              <motion.div 
                 key={link.path}
                 className={`block py-2 font-heading font-medium cursor-pointer ${
                   location === link.path ? "text-primary" : ""
@@ -116,9 +137,12 @@ const Navbar = () => {
                   window.location.href = link.path;
                   setMobileMenuOpen(false);
                 }}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3, delay: 0.1 + (index * 0.1) }}
               >
                 {link.name}
-              </div>
+              </motion.div>
             ))}
             <div className="flex items-center space-x-3 mt-4 justify-between">
               <Button 
@@ -143,7 +167,7 @@ const Navbar = () => {
           </motion.div>
         )}
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 

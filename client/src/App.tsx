@@ -6,12 +6,13 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 import Home from "@/pages/Home";
 import RecipeDetail from "@/pages/RecipeDetail";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
 import Favorites from "@/pages/Favorites";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 
 function Router() {
@@ -51,6 +52,7 @@ function App() {
           <Footer />
         </div>
         <Toaster />
+        <ScrollToTop />
       </TooltipProvider>
     </QueryClientProvider>
   );
