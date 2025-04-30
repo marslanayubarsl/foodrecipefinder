@@ -25,11 +25,9 @@ const RecipeDetailHeader = ({ recipe, isFavorite, toggleFavorite }: RecipeDetail
       <Button 
         variant="link" 
         className="flex items-center text-primary hover:text-primary/80 mb-6 p-0" 
-        asChild
+        onClick={() => window.location.href = '/'}
       >
-        <Link href="/">
-          <i className="fas fa-arrow-left mr-2"></i> Back to recipes
-        </Link>
+        <i className="fas fa-arrow-left mr-2"></i> Back to recipes
       </Button>
       
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10">

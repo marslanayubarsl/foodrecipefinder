@@ -43,9 +43,26 @@ const RecipeDetail = () => {
           <div className="h-10 bg-gray-200 rounded w-1/4 mb-6"></div>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10">
             <div className="lg:col-span-2">
-              <div className="h-96 bg-gray-200 rounded-xl"></div>
+              <div className="h-80 md:h-96 bg-gray-200 rounded-xl relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-gray-200 to-gray-300 animate-gradient"></div>
+              </div>
             </div>
-            <div className="h-96 bg-gray-200 rounded-xl"></div>
+            <div className="bg-gray-100 p-6 rounded-xl">
+              <div className="h-4 bg-gray-200 rounded-full w-1/4 mb-6"></div>
+              <div className="h-8 bg-gray-200 rounded w-3/4 mb-6"></div>
+              <div className="h-4 bg-gray-200 rounded w-1/2 mb-2"></div>
+              <div className="h-4 bg-gray-200 rounded w-full mb-6"></div>
+              <div className="grid grid-cols-2 gap-4 mb-6">
+                <div className="h-12 bg-gray-200 rounded"></div>
+                <div className="h-12 bg-gray-200 rounded"></div>
+                <div className="h-12 bg-gray-200 rounded"></div>
+                <div className="h-12 bg-gray-200 rounded"></div>
+              </div>
+              <div className="flex gap-3">
+                <div className="h-10 bg-gray-200 rounded flex-1"></div>
+                <div className="h-10 bg-gray-200 rounded flex-1"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -54,10 +71,39 @@ const RecipeDetail = () => {
 
   if (error || !recipe) {
     return (
-      <div className="container mx-auto px-4 py-8 text-center">
-        <h2 className="text-2xl font-bold mb-4">Error Loading Recipe</h2>
-        <p className="mb-4">Sorry, we couldn't load the recipe details. Please try again later.</p>
-      </div>
+      <motion.div 
+        className="container mx-auto px-4 py-16 text-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <motion.div
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <i className="fas fa-exclamation-circle text-error text-5xl mb-6"></i>
+          <h2 className="text-2xl md:text-3xl font-heading font-bold mb-4">Recipe Not Found</h2>
+          <p className="text-gray-600 mb-6 max-w-md mx-auto">Sorry, we couldn't load the recipe details. The recipe may have been removed or there might be a temporary issue with our service.</p>
+          
+          <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
+            <Button
+              onClick={() => window.location.href = '/'}
+              className="rounded-full"
+            >
+              <i className="fas fa-home mr-2"></i> Back to Home
+            </Button>
+            
+            <Button
+              variant="outline"
+              onClick={() => window.location.reload()}
+              className="rounded-full"
+            >
+              <i className="fas fa-redo mr-2"></i> Try Again
+            </Button>
+          </div>
+        </motion.div>
+      </motion.div>
     );
   }
 

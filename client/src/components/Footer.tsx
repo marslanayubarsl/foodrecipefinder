@@ -33,10 +33,10 @@ const Footer = () => {
           <div>
             <h3 className="font-heading font-semibold text-lg mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              <li><Link href="/"><a className="text-gray-400 hover:text-primary transition-colors">Home</a></Link></li>
-              <li><Link href="/about"><a className="text-gray-400 hover:text-primary transition-colors">About Us</a></Link></li>
-              <li><Link href="/contact"><a className="text-gray-400 hover:text-primary transition-colors">Contact</a></Link></li>
-              <li><Link href="/favorites"><a className="text-gray-400 hover:text-primary transition-colors">Favorites</a></Link></li>
+              <li><div onClick={() => window.location.href = '/'} className="text-gray-400 hover:text-primary transition-colors cursor-pointer">Home</div></li>
+              <li><div onClick={() => window.location.href = '/about'} className="text-gray-400 hover:text-primary transition-colors cursor-pointer">About Us</div></li>
+              <li><div onClick={() => window.location.href = '/contact'} className="text-gray-400 hover:text-primary transition-colors cursor-pointer">Contact</div></li>
+              <li><div onClick={() => window.location.href = '/favorites'} className="text-gray-400 hover:text-primary transition-colors cursor-pointer">Favorites</div></li>
               <li><a href="#" className="text-gray-400 hover:text-primary transition-colors">Meal Planner</a></li>
             </ul>
           </div>

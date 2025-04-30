@@ -85,17 +85,40 @@ const Favorites = () => {
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="text-7xl mb-4">❤️</div>
-          <h2 className="text-2xl font-heading font-bold mb-4">No favorites yet</h2>
-          <p className="text-gray-600 mb-6">When you find recipes you love, click the heart icon to save them here.</p>
-          <motion.a 
-            href="/"
-            className="bg-primary text-white font-medium px-6 py-3 rounded-full inline-block"
+          <motion.div 
+            className="text-7xl mb-4"
+            animate={{ scale: [1, 1.1, 1] }}
+            transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
+          >
+            ❤️
+          </motion.div>
+          <motion.h2 
+            className="text-2xl font-heading font-bold mb-4"
+            initial={{ y: 10, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            No favorites yet
+          </motion.h2>
+          <motion.p 
+            className="text-gray-600 mb-6"
+            initial={{ y: 10, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            When you find recipes you love, click the heart icon to save them here.
+          </motion.p>
+          <motion.div 
+            onClick={() => window.location.href = '/'}
+            className="bg-primary text-white font-medium px-6 py-3 rounded-full inline-block cursor-pointer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            initial={{ y: 10, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
           >
             Discover Recipes
-          </motion.a>
+          </motion.div>
         </motion.div>
       ) : (
         <motion.div 

@@ -26,8 +26,10 @@ const RecipeCard = ({ recipe, index, toggleFavorite, isFavorite = false }: Recip
       whileHover={{ y: -5, transition: { duration: 0.2 } }}
       whileTap={{ scale: 0.98 }}
     >
-      <Link href={`/recipe/${idMeal}`}>
-        <a>
+      <div 
+        onClick={() => window.location.href = `/recipe/${idMeal}`}
+        className="cursor-pointer"
+      >
           <div className="relative h-48 overflow-hidden">
             <img 
               src={strMealThumb} 
@@ -73,11 +75,10 @@ const RecipeCard = ({ recipe, index, toggleFavorite, isFavorite = false }: Recip
                 <span className="mx-2 text-gray-400">|</span>
                 <span className="text-gray-600 text-sm">{reviews} reviews</span>
               </div>
-              <button className="text-primary hover:text-primary/80 font-medium text-sm transition-colors">View Recipe →</button>
+              <div className="text-primary hover:text-primary/80 font-medium text-sm transition-colors">View Recipe →</div>
             </div>
           </div>
-        </a>
-      </Link>
+      </div>
     </motion.div>
   );
 };
