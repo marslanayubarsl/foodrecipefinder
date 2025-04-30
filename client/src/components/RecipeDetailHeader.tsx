@@ -56,14 +56,31 @@ const RecipeDetailHeader = ({ recipe, isFavorite, toggleFavorite }: RecipeDetail
         >
           <div className="flex justify-between items-start">
             <div>
-              <span className="bg-accent/20 text-dark/80 text-xs px-2 py-1 rounded-full">{strCategory}</span>
-              <h1 className="font-accent text-3xl font-bold mt-3 mb-2">{strMeal}</h1>
+              <motion.span 
+                className="inline-block bg-accent/20 text-dark/80 text-xs px-2 py-1 rounded-full"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                {strCategory}
+              </motion.span>
+              <motion.h1 
+                className="font-accent text-3xl font-bold mt-3 mb-2"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+              >
+                {strMeal}
+              </motion.h1>
             </div>
             <motion.button 
               className={`p-2 ${isFavorite ? 'text-primary' : 'text-gray-600 hover:text-primary'}`}
               onClick={() => toggleFavorite(idMeal)}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
               aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
             >
               <i className={isFavorite ? "fas fa-heart text-xl" : "far fa-heart text-xl"}></i>

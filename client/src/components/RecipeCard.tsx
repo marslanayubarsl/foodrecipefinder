@@ -23,7 +23,8 @@ const RecipeCard = ({ recipe, index, toggleFavorite, isFavorite = false }: Recip
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      whileHover={{ y: -5 }}
+      whileHover={{ y: -5, transition: { duration: 0.2 } }}
+      whileTap={{ scale: 0.98 }}
     >
       <Link href={`/recipe/${idMeal}`}>
         <a>
@@ -34,17 +35,21 @@ const RecipeCard = ({ recipe, index, toggleFavorite, isFavorite = false }: Recip
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
             />
             <div className="absolute top-0 right-0 p-2">
-              <button 
+              <motion.button 
                 className={`bg-white p-2 rounded-full shadow-sm transition-colors ${isFavorite ? 'text-primary' : 'text-gray-600 hover:text-primary'}`}
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
                   toggleFavorite && toggleFavorite(idMeal);
                 }}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                animate={isFavorite ? { scale: [1, 1.2, 1] } : { scale: 1 }}
+                transition={{ duration: 0.3 }}
                 aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
               >
                 <i className={isFavorite ? "fas fa-heart" : "far fa-heart"}></i>
-              </button>
+              </motion.button>
             </div>
           </div>
           <div className="p-4">

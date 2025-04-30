@@ -6,6 +6,7 @@ import RecipeIngredients from "@/components/RecipeIngredients";
 import RecipeInstructions from "@/components/RecipeInstructions";
 import RecipeSimilar from "@/components/RecipeSimilar";
 import { useRecipes } from "@/hooks/useRecipes";
+import { useFavorites } from "@/hooks/useFavorites";
 import { Recipe } from "@/types";
 
 const RecipeDetail = () => {
@@ -13,15 +14,7 @@ const RecipeDetail = () => {
   const { getRecipeById, getRandomRecipes, loading, error } = useRecipes();
   const [recipe, setRecipe] = useState<Recipe | null>(null);
   const [similarRecipes, setSimilarRecipes] = useState<Recipe[]>([]);
-  const [favorites, setFavorites] = useState<string[]>([]);
-
-  const toggleFavorite = (id: string) => {
-    setFavorites(prev => 
-      prev.includes(id) 
-        ? prev.filter(item => item !== id) 
-        : [...prev, id]
-    );
-  };
+  const { toggleFavorite, isFavorite } = useFavorites();
 
   useEffect(() => {
     const fetchRecipeData = async () => {
@@ -79,7 +72,7 @@ const RecipeDetail = () => {
       {/* Recipe Header */}
       <RecipeDetailHeader 
         recipe={recipe} 
-        isFavorite={favorites.includes(recipe.idMeal)} 
+        isFavorite={isFavorite(recipe.idMeal)} 
         toggleFavorite={toggleFavorite} 
       />
       

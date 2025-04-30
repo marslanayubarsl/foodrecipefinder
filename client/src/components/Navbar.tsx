@@ -43,13 +43,12 @@ const Navbar = () => {
                 </a>
               </Link>
             ))}
-            <Link href="/favorites">
-              <a>
-                <Button className="rounded-full font-heading font-medium">
-                  <i className="fas fa-heart mr-1"></i> Favorites
-                </Button>
-              </a>
-            </Link>
+            <Button 
+              className="rounded-full font-heading font-medium"
+              onClick={() => window.location.href = '/favorites'}
+            >
+              <i className="fas fa-heart mr-1"></i> Favorites
+            </Button>
           </div>
           
           {/* Mobile menu button */}
@@ -85,13 +84,15 @@ const Navbar = () => {
                 </a>
               </Link>
             ))}
-            <Link href="/favorites">
-              <a className="block">
-                <Button className="mt-2 w-full rounded-full font-heading font-medium">
-                  <i className="fas fa-heart mr-1"></i> Favorites
-                </Button>
-              </a>
-            </Link>
+            <Button 
+              className="mt-2 w-full rounded-full font-heading font-medium"
+              onClick={() => {
+                window.location.href = '/favorites';
+                setMobileMenuOpen(false);
+              }}
+            >
+              <i className="fas fa-heart mr-1"></i> Favorites
+            </Button>
           </motion.div>
         )}
       </div>
