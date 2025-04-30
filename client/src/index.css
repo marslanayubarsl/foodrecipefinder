@@ -32,16 +32,16 @@
 }
 
 .dark {
-  --background: 240 10% 3.9%;
+  --background: 222 47% 11%;
   --foreground: 0 0% 98%;
-  --muted: 240 3.7% 15.9%;
-  --muted-foreground: 240 5% 64.9%;
-  --popover: 240 10% 3.9%;
-  --popover-foreground: 0 0% 98%;
-  --card: 240 10% 3.9%;
-  --card-foreground: 0 0% 98%;
-  --border: 240 3.7% 15.9%;
-  --input: 240 3.7% 15.9%;
+  --muted: 223 47% 11%;
+  --muted-foreground: 215 16% 65%;
+  --popover: 222 47% 11%;
+  --popover-foreground: 210 40% 98%;
+  --card: 222 47% 11%;
+  --card-foreground: 210 40% 98%;
+  --border: 216 34% 17%;
+  --input: 216 34% 17%;
   --primary: 0 85% 71%;
   --primary-foreground: 0 0% 100%;
   --secondary: 173 69% 53%;
@@ -63,6 +63,9 @@
 }
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
+}
+.dark ::-webkit-scrollbar-track {
+  background: hsl(220, 47%, 15%);
 }
 ::-webkit-scrollbar-thumb {
   background: hsl(var(--primary));
