@@ -21,7 +21,7 @@ const Hero = ({ onSearch }: HeroProps) => {
   return (
     <section className="relative bg-dark text-white overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-r from-dark to-black opacity-80"></div>
-      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')" }}></div>
+      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')" }}></div>
       <div className="container mx-auto px-4 py-16 relative z-10">
         <motion.div 
           className="max-w-2xl"

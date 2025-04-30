@@ -32,7 +32,7 @@ const SearchBar = ({ onSearch, className = "" }: SearchBarProps) => {
         type="text" 
         value={searchQuery}
         onChange={handleChange}
-        className="w-full px-6 py-4 pr-12 text-dark rounded-full focus:outline-none focus:ring-2 focus:ring-primary shadow-lg" 
+        className="w-full px-6 py-4 pr-12 text-dark rounded-full focus:outline-none focus:ring-2 focus:ring-primary shadow-lg font-medium" 
         placeholder="Enter an ingredient (e.g., 'chicken', 'tomato')"
         aria-label="Search for recipes by ingredient"
       />
