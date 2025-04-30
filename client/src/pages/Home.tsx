@@ -10,17 +10,15 @@ import { Recipe } from "@/types";
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [activeFilter, setActiveFilter] = useState("All Recipes");
-  const { recipes, loading, error, searchRecipes } = useRecipes();
+  const [activeFilter, setActiveFilter] = useState("Chicken"); // Default to Chicken filter
+  const { recipes, setRecipes, loading, error, searchRecipes, getRandomRecipes, getRecipesByCategory } = useRecipes();
   const { favorites, toggleFavorite, isFavorite } = useFavorites();
 
   const filters = [
     "All Recipes",
-    "Breakfast",
-    "Lunch",
-    "Dinner",
-    "Dessert",
-    "Vegetarian"
+    "Chicken",
+    "Beef",
+    "Rice"
   ];
 
   const collections = [
@@ -52,18 +50,27 @@ const Home = () => {
   const handleFilterClick = (filter: string) => {
     setActiveFilter(filter);
     
-    // If not "All Recipes", use the filter as a search term
-    if (filter !== "All Recipes") {
-      searchRecipes(filter);
-    } else if (searchQuery) {
-      // If returning to "All Recipes", use the current search query
-      searchRecipes(searchQuery);
+    // Handle different filter options
+    if (filter === "All Recipes") {
+      // If returning to "All Recipes" and there's a search query, use it
+      if (searchQuery) {
+        searchRecipes(searchQuery);
+      } else {
+        // Otherwise load some random recipes
+        getRandomRecipes(8).then(randomRecipes => {
+          setRecipes(randomRecipes);
+        });
+      }
+    } else {
+      // For specific ingredients (Chicken, Beef, Rice)
+      getRecipesByCategory(filter);
     }
   };
 
   // Initial load
   useEffect(() => {
-    searchRecipes("chicken"); // Default search term
+    // Load Chicken recipes by default
+    getRecipesByCategory("Chicken");
   }, []);
 
   return (

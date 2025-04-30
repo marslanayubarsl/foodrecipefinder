@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Recipe, ApiResponse } from "@/types";
-import { fetchMealsByIngredient, fetchMealById, fetchRandomMeal } from "@/lib/api";
+import { fetchMealsByIngredient, fetchMealById, fetchRandomMeal, fetchMealsByCategory } from "@/lib/api";
 
 export const useRecipes = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
@@ -71,12 +71,34 @@ export const useRecipes = () => {
     }
   };
 
+  // Get recipes by category (e.g., beef, chicken)
+  const getRecipesByCategory = async (category: string) => {
+    setLoading(true);
+    setError(null);
+    
+    try {
+      const data = await fetchMealsByCategory(category);
+      if (data && data.meals) {
+        setRecipes(data.meals);
+      } else {
+        setRecipes([]);
+      }
+    } catch (err) {
+      setError("Failed to fetch category recipes. Please try again.");
+      console.error("Error fetching category recipes:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return {
     recipes,
+    setRecipes,
     loading,
     error,
     searchRecipes,
     getRecipeById,
-    getRandomRecipes
+    getRandomRecipes,
+    getRecipesByCategory
   };
 };
