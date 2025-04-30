@@ -8,6 +8,7 @@ import RecipeSimilar from "@/components/RecipeSimilar";
 import { useRecipes } from "@/hooks/useRecipes";
 import { useFavorites } from "@/hooks/useFavorites";
 import { Recipe } from "@/types";
+import { Button } from "@/components/ui/button";
 
 const RecipeDetail = () => {
   const [, params] = useRoute("/recipe/:id");
