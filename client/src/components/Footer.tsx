@@ -2,7 +2,7 @@ import { Link } from "wouter";
 
 const Footer = () => {
   return (
-    <footer className="bg-dark text-white py-12">
+    <footer className="bg-gradient-to-r from-dark to-dark/90 text-white py-12">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
@@ -36,7 +36,7 @@ const Footer = () => {
               <li><Link href="/"><a className="text-gray-400 hover:text-primary transition-colors">Home</a></Link></li>
               <li><Link href="/about"><a className="text-gray-400 hover:text-primary transition-colors">About Us</a></Link></li>
               <li><Link href="/contact"><a className="text-gray-400 hover:text-primary transition-colors">Contact</a></Link></li>
-              <li><a href="#" className="text-gray-400 hover:text-primary transition-colors">Recipes</a></li>
+              <li><Link href="/favorites"><a className="text-gray-400 hover:text-primary transition-colors">Favorites</a></Link></li>
               <li><a href="#" className="text-gray-400 hover:text-primary transition-colors">Meal Planner</a></li>
             </ul>
           </div>

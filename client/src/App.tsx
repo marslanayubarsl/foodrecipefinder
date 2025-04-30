@@ -10,6 +10,7 @@ import Home from "@/pages/Home";
 import RecipeDetail from "@/pages/RecipeDetail";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
+import Favorites from "@/pages/Favorites";
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 
@@ -19,6 +20,7 @@ function Router() {
       <Switch>
         <Route path="/" component={Home} />
         <Route path="/recipe/:id" component={RecipeDetail} />
+        <Route path="/favorites" component={Favorites} />
         <Route path="/about" component={About} />
         <Route path="/contact" component={Contact} />
         <Route component={NotFound} />

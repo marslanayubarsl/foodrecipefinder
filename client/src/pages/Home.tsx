@@ -5,13 +5,14 @@ import RecipeCard from "@/components/RecipeCard";
 import FilterButton from "@/components/FilterButton";
 import CollectionCard from "@/components/CollectionCard";
 import { useRecipes } from "@/hooks/useRecipes";
+import { useFavorites } from "@/hooks/useFavorites";
 import { Recipe } from "@/types";
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeFilter, setActiveFilter] = useState("All Recipes");
   const { recipes, loading, error, searchRecipes } = useRecipes();
-  const [favorites, setFavorites] = useState<string[]>([]);
+  const { favorites, toggleFavorite, isFavorite } = useFavorites();
 
   const filters = [
     "All Recipes",
@@ -58,14 +59,6 @@ const Home = () => {
       // If returning to "All Recipes", use the current search query
       searchRecipes(searchQuery);
     }
-  };
-
-  const toggleFavorite = (id: string) => {
-    setFavorites(prev => 
-      prev.includes(id) 
-        ? prev.filter(item => item !== id) 
-        : [...prev, id]
-    );
   };
 
   // Initial load
@@ -136,7 +129,7 @@ const Home = () => {
                 recipe={recipe} 
                 index={index}
                 toggleFavorite={toggleFavorite}
-                isFavorite={favorites.includes(recipe.idMeal)}
+                isFavorite={isFavorite(recipe.idMeal)}
               />
             ))
           ) : (

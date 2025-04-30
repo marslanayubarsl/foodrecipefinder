@@ -13,6 +13,7 @@ const Navbar = () => {
 
   const navLinks = [
     { name: "Home", path: "/" },
+    { name: "Favorites", path: "/favorites" },
     { name: "About Us", path: "/about" },
     { name: "Contact", path: "/contact" },
   ];
@@ -42,9 +43,13 @@ const Navbar = () => {
                 </a>
               </Link>
             ))}
-            <Button className="rounded-full font-heading font-medium">
-              <i className="fas fa-heart mr-1"></i> Favorites
-            </Button>
+            <Link href="/favorites">
+              <a>
+                <Button className="rounded-full font-heading font-medium">
+                  <i className="fas fa-heart mr-1"></i> Favorites
+                </Button>
+              </a>
+            </Link>
           </div>
           
           {/* Mobile menu button */}
@@ -80,9 +85,13 @@ const Navbar = () => {
                 </a>
               </Link>
             ))}
-            <Button className="mt-2 w-full rounded-full font-heading font-medium">
-              <i className="fas fa-heart mr-1"></i> Favorites
-            </Button>
+            <Link href="/favorites">
+              <a className="block">
+                <Button className="mt-2 w-full rounded-full font-heading font-medium">
+                  <i className="fas fa-heart mr-1"></i> Favorites
+                </Button>
+              </a>
+            </Link>
           </motion.div>
         )}
       </div>
