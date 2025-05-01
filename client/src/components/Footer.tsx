@@ -75,11 +75,14 @@ const Footer = () => {
       </div>
       
       {/* Floating Recipe Platter on Right */}
-      <div className="hidden lg:block absolute -right-10 top-1/2 transform -translate-y-1/2 opacity-90">
+      <div className="hidden lg:block absolute right-0 2xl:right-32 top-1/2 transform -translate-y-1/2">
         <img 
-          src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+          src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80&bg=none" 
           alt="Beautiful food platter" 
-          className="rounded-xl shadow-2xl object-cover w-72 h-72" 
+          className="rounded-full border-2 border-primary object-cover w-80 h-80 animate-float mix-blend-luminosity" 
+          style={{
+            filter: 'drop-shadow(0 20px 13px rgba(0, 0, 0, 0.4))'
+          }}
         />
       </div>
     </footer>
