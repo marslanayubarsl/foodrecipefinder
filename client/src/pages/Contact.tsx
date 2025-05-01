@@ -61,10 +61,10 @@ const Contact = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Heading as="h1" size="lg" emphasis="accent" color="blue" className="mb-4 text-blue-500">
+            <Heading as="h1" size="lg" emphasis="accent" className="mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
               Contact Us
             </Heading>
-            <p className="text-lg md:text-xl mb-0 text-blue-400">We'd love to hear from you</p>
+            <p className="text-lg md:text-xl mb-0 bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-purple-300">We'd love to hear from you</p>
           </motion.div>
         </div>
       </div>

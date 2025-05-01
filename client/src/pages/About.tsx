@@ -21,10 +21,10 @@ const About = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Heading as="h1" size="lg" emphasis="accent" color="blue" className="mb-4 text-blue-500">
+            <Heading as="h1" size="lg" emphasis="accent" className="mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
               About Recipe Finder
             </Heading>
-            <p className="text-lg md:text-xl mb-0 text-blue-400">Discover the story behind our passion for food</p>
+            <p className="text-lg md:text-xl mb-0 bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-purple-300">Discover the story behind our passion for food</p>
           </motion.div>
         </div>
       </div>
