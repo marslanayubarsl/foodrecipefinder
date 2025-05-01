@@ -7,11 +7,9 @@ interface HeroProps {
 
 const Hero = ({ onSearch }: HeroProps) => {
   const popularIngredients = [
-    "Breakfast", 
-    "Lunch", 
-    "Dinner", 
-    "Dessert", 
-    "Vegetarian"
+    "Chicken", 
+    "Beef", 
+    "Rice"
   ];
 
   const handlePopularClick = (ingredient: string) => {
