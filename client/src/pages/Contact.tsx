@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Heading } from "@/components/ui/heading";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { MapPin, Phone, Mail, Clock, Map } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Map, Facebook, Twitter, Instagram, CircleDashed } from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -138,17 +138,17 @@ const Contact = () => {
             >
               <h3 className="font-heading font-semibold text-xl mb-4">Follow Us</h3>
               <div className="flex space-x-4">
-                <a href="#" className="h-10 w-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary/90 transition-colors">
-                  <i className="fab fa-facebook-f"></i>
+                <a href="#" className="h-10 w-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary/90 social-icon">
+                  <Facebook size={18} />
                 </a>
-                <a href="#" className="h-10 w-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary/90 transition-colors">
-                  <i className="fab fa-twitter"></i>
+                <a href="#" className="h-10 w-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary/90 social-icon">
+                  <Twitter size={18} />
                 </a>
-                <a href="#" className="h-10 w-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary/90 transition-colors">
-                  <i className="fab fa-instagram"></i>
+                <a href="#" className="h-10 w-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary/90 social-icon">
+                  <Instagram size={18} />
                 </a>
-                <a href="#" className="h-10 w-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary/90 transition-colors">
-                  <i className="fab fa-pinterest-p"></i>
+                <a href="#" className="h-10 w-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary/90 social-icon">
+                  <CircleDashed size={18} />
                 </a>
               </div>
             </motion.div>
