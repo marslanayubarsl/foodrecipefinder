@@ -6,16 +6,24 @@ export const useRecipes = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const [currentQuery, setCurrentQuery] = useState<string | null>(null);
+  const [currentCategory, setCurrentCategory] = useState<string | null>(null);
 
-  const searchRecipes = async (ingredient: string) => {
+  const searchRecipes = async (ingredient: string, append: boolean = false) => {
     setLoading(true);
     setError(null);
+    setCurrentQuery(ingredient);
+    setCurrentCategory(null);
     
     try {
       const data = await fetchMealsByIngredient(ingredient);
       if (data && data.meals) {
-        setRecipes(data.meals);
-      } else {
+        if (append) {
+          setRecipes(prevRecipes => [...prevRecipes, ...data.meals]);
+        } else {
+          setRecipes(data.meals);
+        }
+      } else if (!append) {
         setRecipes([]);
       }
     } catch (err) {
@@ -72,15 +80,21 @@ export const useRecipes = () => {
   };
 
   // Get recipes by category (e.g., beef, chicken)
-  const getRecipesByCategory = async (category: string) => {
+  const getRecipesByCategory = async (category: string, append: boolean = false) => {
     setLoading(true);
     setError(null);
+    setCurrentCategory(category);
+    setCurrentQuery(null);
     
     try {
       const data = await fetchMealsByCategory(category);
       if (data && data.meals) {
-        setRecipes(data.meals);
-      } else {
+        if (append) {
+          setRecipes(prevRecipes => [...prevRecipes, ...data.meals]);
+        } else {
+          setRecipes(data.meals);
+        }
+      } else if (!append) {
         setRecipes([]);
       }
     } catch (err) {
