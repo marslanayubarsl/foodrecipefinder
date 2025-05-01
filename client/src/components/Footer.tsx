@@ -3,9 +3,9 @@ import { Facebook, Twitter, Instagram, AtSign } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r from-dark to-dark/90 text-white py-12">
+    <footer className="bg-gradient-to-r from-dark to-dark/90 text-white py-12 relative overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
           <div>
             <div className="flex items-center space-x-2 mb-6">
               <svg className="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -53,6 +53,15 @@ const Footer = () => {
               <li><a href="#" className="text-gray-400 hover:text-primary transition-colors">Lentils</a></li>
             </ul>
           </div>
+          
+          {/* Recipe Platter Image */}
+          <div className="hidden xl:block">
+            <img 
+              src="https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+              alt="Food platter with various dishes" 
+              className="rounded-lg shadow-2xl object-cover w-full h-48"
+            />
+          </div>
         </div>
         
         <div className="border-t border-gray-800 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center">
@@ -63,6 +72,15 @@ const Footer = () => {
             <a href="#" className="text-gray-400 hover:text-primary text-sm transition-colors">Cookie Policy</a>
           </div>
         </div>
+      </div>
+      
+      {/* Floating Recipe Platter on Right */}
+      <div className="hidden lg:block absolute -right-10 top-1/2 transform -translate-y-1/2 opacity-90">
+        <img 
+          src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+          alt="Beautiful food platter" 
+          className="rounded-xl shadow-2xl object-cover w-72 h-72" 
+        />
       </div>
     </footer>
   );
