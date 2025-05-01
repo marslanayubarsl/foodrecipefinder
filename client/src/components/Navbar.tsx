@@ -56,7 +56,7 @@ const Navbar = () => {
       }}
     >
       <div className="container mx-auto px-4 py-4">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center relative">
           <motion.div 
             onClick={() => window.location.href = '/'}
             className="flex items-center space-x-2 cursor-pointer"
@@ -77,9 +77,9 @@ const Navbar = () => {
             <span className="font-heading font-bold text-xl text-primary">Recipe Finder</span>
           </motion.div>
           
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation - Centered */}
           <motion.div 
-            className="hidden md:flex items-center space-x-8"
+            className="hidden md:flex items-center space-x-8 absolute left-1/2 transform -translate-x-1/2"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
@@ -105,25 +105,28 @@ const Navbar = () => {
                 {link.name}
               </motion.div>
             ))}
-            <div className="flex space-x-4 items-center">
-              <motion.button
-                onClick={toggleTheme}
-                className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-                initial={{ opacity: 0, rotate: -180, scale: 0.5 }}
-                animate={{ opacity: 1, rotate: 0, scale: 1 }}
-                transition={{ 
-                  duration: 0.6, 
-                  delay: 0.6,
-                  type: "spring", 
-                  stiffness: 200 
-                }}
-                whileHover={{ scale: 1.2, rotate: 15 }}
-                whileTap={{ scale: 0.8 }}
-                aria-label="Toggle theme"
-              >
-                {darkMode ? <Sun size={18} /> : <Moon size={18} />}
-              </motion.button>
-            </div>
+            
+          </motion.div>
+          
+          {/* Theme Toggle Button - Right side */}
+          <motion.div className="flex justify-end items-center">
+            <motion.button
+              onClick={toggleTheme}
+              className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+              initial={{ opacity: 0, rotate: -180, scale: 0.5 }}
+              animate={{ opacity: 1, rotate: 0, scale: 1 }}
+              transition={{ 
+                duration: 0.6, 
+                delay: 0.6,
+                type: "spring", 
+                stiffness: 200 
+              }}
+              whileHover={{ scale: 1.2, rotate: 15 }}
+              whileTap={{ scale: 0.8 }}
+              aria-label="Toggle theme"
+            >
+              {darkMode ? <Sun size={18} /> : <Moon size={18} />}
+            </motion.button>
           </motion.div>
           
           {/* Mobile menu button */}
