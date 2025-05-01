@@ -1,6 +1,7 @@
 import { Recipe } from "@/types";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
+import { Heart, Clock, Star } from "lucide-react";
 
 interface RecipeCardProps {
   recipe: Recipe;
@@ -50,7 +51,7 @@ const RecipeCard = ({ recipe, index, toggleFavorite, isFavorite = false }: Recip
               transition={{ duration: 0.3 }}
               aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
             >
-              <i className={`${isFavorite ? "fas fa-heart text-red-500" : "far fa-heart"} transition-all duration-300`}></i>
+              <Heart className={`${isFavorite ? "fill-red-500 text-red-500" : ""} transition-all duration-300 w-5 h-5`} />
             </motion.button>
           </div>
         </div>
@@ -58,7 +59,7 @@ const RecipeCard = ({ recipe, index, toggleFavorite, isFavorite = false }: Recip
           <div className="flex items-center mb-1">
             <span className="bg-accent/20 text-dark/80 dark:bg-accent/10 dark:text-gray-300 text-xs px-2 py-1 rounded-full">{strCategory}</span>
             <div className="ml-auto flex items-center">
-              <i className="fas fa-clock text-gray-500 dark:text-gray-400 mr-1 text-sm"></i>
+              <Clock className="text-gray-500 dark:text-gray-400 mr-1 w-4 h-4" />
               <span className="text-gray-500 dark:text-gray-400 text-sm">{cookingTime} min</span>
             </div>
           </div>
@@ -69,7 +70,7 @@ const RecipeCard = ({ recipe, index, toggleFavorite, isFavorite = false }: Recip
           <div className="mt-4 flex justify-between items-center">
             <div className="flex items-center">
               <div className="flex items-center">
-                <i className="fas fa-star text-accent"></i>
+                <Star className="text-accent fill-accent w-4 h-4" />
                 <span className="ml-1 text-gray-700 dark:text-gray-300">{rating}</span>
               </div>
               <span className="mx-2 text-gray-400 dark:text-gray-500">|</span>
