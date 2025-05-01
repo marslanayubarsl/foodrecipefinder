@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Heading } from "@/components/ui/heading";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { MapPin, Phone, Mail, Clock, Map } from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -75,7 +76,7 @@ const Contact = () => {
                 transition={{ duration: 0.3, delay: 0.1 }}
               >
                 <div className="flex-shrink-0 h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                  <i className="fas fa-map-marker-alt"></i>
+                  <MapPin size={20} />
                 </div>
                 <div className="ml-4">
                   <h3 className="font-heading font-semibold text-lg">Address</h3>
@@ -90,7 +91,7 @@ const Contact = () => {
                 transition={{ duration: 0.3, delay: 0.2 }}
               >
                 <div className="flex-shrink-0 h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                  <i className="fas fa-phone-alt"></i>
+                  <Phone size={20} />
                 </div>
                 <div className="ml-4">
                   <h3 className="font-heading font-semibold text-lg">Phone</h3>
@@ -105,7 +106,7 @@ const Contact = () => {
                 transition={{ duration: 0.3, delay: 0.3 }}
               >
                 <div className="flex-shrink-0 h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                  <i className="fas fa-envelope"></i>
+                  <Mail size={20} />
                 </div>
                 <div className="ml-4">
                   <h3 className="font-heading font-semibold text-lg">Email</h3>
@@ -120,7 +121,7 @@ const Contact = () => {
                 transition={{ duration: 0.3, delay: 0.4 }}
               >
                 <div className="flex-shrink-0 h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                  <i className="fas fa-clock"></i>
+                  <Clock size={20} />
                 </div>
                 <div className="ml-4">
                   <h3 className="font-heading font-semibold text-lg">Hours</h3>
@@ -233,7 +234,7 @@ const Contact = () => {
             {/* This would be a real map integration in production */}
             <div className="h-full w-full bg-gray-200 flex items-center justify-center">
               <div className="text-center px-4">
-                <i className="fas fa-map-marked-alt text-primary text-5xl mb-4"></i>
+                <Map size={48} className="text-primary mb-4" />
                 <p className="text-gray-700">Interactive map would be displayed here</p>
               </div>
             </div>
