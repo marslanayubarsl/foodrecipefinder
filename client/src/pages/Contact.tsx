@@ -1,8 +1,19 @@
 import { motion } from "framer-motion";
 import { Heading } from "@/components/ui/heading";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MapPin, Phone, Mail, Clock, Map, Facebook, Twitter, Instagram, CircleDashed } from "lucide-react";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
+
+// Fix Leaflet marker icon issue
+delete (L.Icon.Default.prototype as any)._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
+  iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+});
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -231,13 +242,26 @@ const Contact = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
         >
           <div className="bg-white rounded-xl overflow-hidden shadow-md h-96">
-            {/* This would be a real map integration in production */}
-            <div className="h-full w-full bg-gray-200 flex items-center justify-center">
-              <div className="text-center px-4">
-                <Map size={48} className="text-primary mb-4" />
-                <p className="text-gray-700">Interactive map would be displayed here</p>
-              </div>
-            </div>
+            <MapContainer 
+              center={[40.7128, -74.0060]} 
+              zoom={13} 
+              scrollWheelZoom={false}
+              style={{ height: '100%', width: '100%' }}
+              className="z-10"
+            >
+              <TileLayer
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              />
+              <Marker position={[40.7128, -74.0060]}>
+                <Popup>
+                  <div className="p-2">
+                    <h3 className="font-heading font-semibold text-base">Recipe Finder HQ</h3>
+                    <p className="text-sm text-gray-700">123 Recipe Street<br/>Foodie City, FC 12345</p>
+                  </div>
+                </Popup>
+              </Marker>
+            </MapContainer>
           </div>
         </motion.div>
         

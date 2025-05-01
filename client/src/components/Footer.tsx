@@ -16,16 +16,16 @@ const Footer = () => {
             </div>
             <p className="text-blue-100 mb-4">Discover delicious recipes with ingredients you already have in your kitchen.</p>
             <div className="flex space-x-4">
-              <a href="#" className="bg-blue-600/30 p-2 rounded-full text-blue-100 hover:text-white hover:bg-blue-500 transition-all transform hover:scale-110">
+              <a href="#" className="bg-blue-600/30 p-2 rounded-full text-blue-100 hover:text-white hover:bg-blue-500 transition-all social-icon">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="bg-blue-600/30 p-2 rounded-full text-blue-100 hover:text-white hover:bg-blue-500 transition-all transform hover:scale-110">
+              <a href="#" className="bg-blue-600/30 p-2 rounded-full text-blue-100 hover:text-white hover:bg-blue-500 transition-all social-icon">
                 <Twitter className="w-5 h-5" />
               </a>
-              <a href="#" className="bg-blue-600/30 p-2 rounded-full text-blue-100 hover:text-white hover:bg-blue-500 transition-all transform hover:scale-110">
+              <a href="#" className="bg-blue-600/30 p-2 rounded-full text-blue-100 hover:text-white hover:bg-blue-500 transition-all social-icon">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="bg-blue-600/30 p-2 rounded-full text-blue-100 hover:text-white hover:bg-blue-500 transition-all transform hover:scale-110">
+              <a href="#" className="bg-blue-600/30 p-2 rounded-full text-blue-100 hover:text-white hover:bg-blue-500 transition-all social-icon">
                 <AtSign className="w-5 h-5" />
               </a>
             </div>
