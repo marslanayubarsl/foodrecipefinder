@@ -21,7 +21,7 @@ const Home = () => {
     "Rice",
     "Fish",
     "Tomato",
-    "Dal"
+    "Lentils"
   ];
 
   const collections = [
@@ -64,11 +64,14 @@ const Home = () => {
           setRecipes(randomRecipes);
         });
       }
-    } else if (["Rice", "Tomato", "Dal"].includes(filter)) {
+    } else if (filter === "Fish") {
+      // Fish should use Seafood category
+      getRecipesByCategory("Seafood");
+    } else if (["Rice", "Tomato", "Lentils"].includes(filter)) {
       // These are ingredients, not categories
       searchRecipes(filter);
     } else {
-      // For categories like Chicken, Beef, and Fish
+      // For categories like Chicken and Beef
       getRecipesByCategory(filter);
     }
   };

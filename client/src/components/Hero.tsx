@@ -12,7 +12,7 @@ const Hero = ({ onSearch }: HeroProps) => {
     "Rice",
     "Fish",
     "Tomato",
-    "Dal"
+    "Lentils"
   ];
 
   const handlePopularClick = (ingredient: string) => {
