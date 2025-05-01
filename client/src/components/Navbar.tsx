@@ -70,11 +70,52 @@ const Navbar = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <svg className="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
-              <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd"></path>
+            <svg className="w-10 h-10" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+              {/* Bowl base with gradient */}
+              <path d="M10 24C10 24 4 34 4 44C4 54 14 56 32 56C50 56 60 54 60 44C60 34 54 24 54 24H10Z" fill="url(#bowl-gradient)" />
+              
+              {/* Steam paths with animation */}
+              <path className="steam steam-1" d="M24 10C24 10 20 14 24 18C28 22 24 26 24 26" stroke="#9C44DC" strokeWidth="2" strokeLinecap="round" fill="none" />
+              <path className="steam steam-2" d="M32 6C32 6 28 10 32 14C36 18 32 22 32 22" stroke="#0078FF" strokeWidth="2" strokeLinecap="round" fill="none" />
+              <path className="steam steam-3" d="M40 10C40 10 36 14 40 18C44 22 40 26 40 26" stroke="#FF9933" strokeWidth="2" strokeLinecap="round" fill="none" />
+              
+              {/* Spoon */}
+              <path d="M46 22C46 18 50 16 52 14C54 12 54 8 50 6C46 4 44 8 44 10C44 12 42 16 46 22Z" fill="#E0E0E0" stroke="#CCCCCC" strokeWidth="1" />
+              
+              {/* Gradient definition */}
+              <defs>
+                <linearGradient id="bowl-gradient" x1="4" y1="24" x2="60" y2="56" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stopColor="#0078FF" />
+                  <stop offset="1" stopColor="#9C44DC" />
+                </linearGradient>
+                
+                {/* Animation for steam */}
+                <style>{`
+                  .steam {
+                    opacity: 0.8;
+                    animation-name: steam-animation;
+                    animation-duration: 3s;
+                    animation-timing-function: ease-in-out;
+                    animation-iteration-count: infinite;
+                  }
+                  .steam-1 {
+                    animation-delay: 0.1s;
+                  }
+                  .steam-2 {
+                    animation-delay: 0.5s;
+                  }
+                  .steam-3 {
+                    animation-delay: 0.9s;
+                  }
+                  @keyframes steam-animation {
+                    0% { transform: translateY(0) scale(1); opacity: 0.8; }
+                    50% { transform: translateY(-5px) scale(1.1); opacity: 0.6; }
+                    100% { transform: translateY(0) scale(1); opacity: 0.8; }
+                  }
+                `}</style>
+              </defs>
             </svg>
-            <span className="font-heading font-bold text-xl text-primary">Recipe Finder</span>
+            <span className="font-heading font-bold text-xl bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary ml-1">Recipe Finder</span>
           </motion.div>
           
           {/* Desktop Navigation - Centered */}
