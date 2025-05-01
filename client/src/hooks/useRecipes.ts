@@ -8,6 +8,7 @@ export const useRecipes = () => {
   const [error, setError] = useState<string | null>(null);
   const [currentQuery, setCurrentQuery] = useState<string | null>(null);
   const [currentCategory, setCurrentCategory] = useState<string | null>(null);
+  const [hasMore, setHasMore] = useState<boolean>(true);
 
   const searchRecipes = async (ingredient: string, append: boolean = false) => {
     setLoading(true);
@@ -18,13 +19,18 @@ export const useRecipes = () => {
     try {
       const data = await fetchMealsByIngredient(ingredient);
       if (data && data.meals) {
+        const mealData = data.meals || [];
         if (append) {
-          setRecipes(prevRecipes => [...prevRecipes, ...data.meals]);
+          setRecipes(prevRecipes => [...prevRecipes, ...mealData]);
+          // If we didn't get any new recipes, there are no more to load
+          setHasMore(mealData.length > 0);
         } else {
-          setRecipes(data.meals);
+          setRecipes(mealData);
+          setHasMore(mealData.length > 0);
         }
       } else if (!append) {
         setRecipes([]);
+        setHasMore(false);
       }
     } catch (err) {
       setError("Failed to fetch recipes. Please try again.");
@@ -89,13 +95,18 @@ export const useRecipes = () => {
     try {
       const data = await fetchMealsByCategory(category);
       if (data && data.meals) {
+        const mealData = data.meals || [];
         if (append) {
-          setRecipes(prevRecipes => [...prevRecipes, ...data.meals]);
+          setRecipes(prevRecipes => [...prevRecipes, ...mealData]);
+          // If we didn't get any new recipes, there are no more to load
+          setHasMore(mealData.length > 0);
         } else {
-          setRecipes(data.meals);
+          setRecipes(mealData);
+          setHasMore(mealData.length > 0);
         }
       } else if (!append) {
         setRecipes([]);
+        setHasMore(false);
       }
     } catch (err) {
       setError("Failed to fetch category recipes. Please try again.");
@@ -105,14 +116,29 @@ export const useRecipes = () => {
     }
   };
 
+  // Function to load more recipes based on current query/category
+  const loadMore = async () => {
+    if (loading || !hasMore) return;
+    
+    if (currentQuery) {
+      await searchRecipes(currentQuery, true);
+    } else if (currentCategory) {
+      await getRecipesByCategory(currentCategory, true);
+    }
+  };
+
   return {
     recipes,
     setRecipes,
     loading,
     error,
+    hasMore,
+    currentQuery,
+    currentCategory,
     searchRecipes,
     getRecipeById,
     getRandomRecipes,
-    getRecipesByCategory
+    getRecipesByCategory,
+    loadMore
   };
 };
