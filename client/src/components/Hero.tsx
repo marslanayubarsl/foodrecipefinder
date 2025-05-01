@@ -9,7 +9,10 @@ const Hero = ({ onSearch }: HeroProps) => {
   const popularIngredients = [
     "Chicken", 
     "Beef", 
-    "Rice"
+    "Rice",
+    "Fish",
+    "Tomato",
+    "Dal"
   ];
 
   const handlePopularClick = (ingredient: string) => {

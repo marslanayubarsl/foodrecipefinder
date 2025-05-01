@@ -48,8 +48,9 @@ const Footer = () => {
               <li><a href="#" className="text-gray-400 hover:text-primary transition-colors">Chicken</a></li>
               <li><a href="#" className="text-gray-400 hover:text-primary transition-colors">Beef</a></li>
               <li><a href="#" className="text-gray-400 hover:text-primary transition-colors">Rice</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-primary transition-colors">Seafood</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-primary transition-colors">Vegetarian</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-primary transition-colors">Fish</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-primary transition-colors">Tomato</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-primary transition-colors">Dal</a></li>
             </ul>
           </div>
           

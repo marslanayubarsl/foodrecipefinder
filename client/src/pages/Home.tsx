@@ -18,7 +18,10 @@ const Home = () => {
     "All Recipes",
     "Chicken",
     "Beef",
-    "Rice"
+    "Rice",
+    "Fish",
+    "Tomato",
+    "Dal"
   ];
 
   const collections = [
@@ -61,11 +64,11 @@ const Home = () => {
           setRecipes(randomRecipes);
         });
       }
-    } else if (filter === "Rice") {
-      // Rice is an ingredient, not a category
+    } else if (["Rice", "Tomato", "Dal"].includes(filter)) {
+      // These are ingredients, not categories
       searchRecipes(filter);
     } else {
-      // For categories like Chicken and Beef
+      // For categories like Chicken, Beef, and Fish
       getRecipesByCategory(filter);
     }
   };
