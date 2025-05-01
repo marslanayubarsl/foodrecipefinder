@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useLocation } from "wouter";
 
 interface CollectionCardProps {
   image: string;
@@ -8,6 +9,30 @@ interface CollectionCardProps {
 }
 
 const CollectionCard = ({ image, title, description, recipeCount }: CollectionCardProps) => {
+  const [_, setLocation] = useLocation();
+
+  const handleViewCollection = () => {
+    // Navigate to home page
+    setLocation("/");
+    
+    // Since we're using the "All Recipes" button to show all recipes,
+    // we can simulate a click on that filter after navigation
+    // The setActiveFilter and getRandomRecipes will be handled by the Home component
+    
+    // Add a small delay to ensure navigation completes first
+    setTimeout(() => {
+      // Find all buttons and locate the one with 'All Recipes' text
+      const buttons = document.querySelectorAll('button');
+      const allRecipesButton = Array.from(buttons).find(button => 
+        button.textContent?.includes('All Recipes')
+      );
+      
+      if (allRecipesButton) {
+        (allRecipesButton as HTMLButtonElement).click();
+      }
+    }, 100);
+  };
+
   return (
     <motion.div 
       className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 group cursor-pointer"
@@ -15,6 +40,7 @@ const CollectionCard = ({ image, title, description, recipeCount }: CollectionCa
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
+      onClick={handleViewCollection}
     >
       <div className="h-40 relative overflow-hidden">
         <img 
@@ -33,6 +59,10 @@ const CollectionCard = ({ image, title, description, recipeCount }: CollectionCa
             className="text-primary hover:text-primary/80 font-medium text-sm transition-colors flex items-center"
             whileHover={{ x: 3 }}
             whileTap={{ scale: 0.97 }}
+            onClick={(e) => {
+              e.stopPropagation(); // Prevent triggering the parent onClick
+              handleViewCollection();
+            }}
           >
             <span className="mr-1">View Collection</span>
             <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
