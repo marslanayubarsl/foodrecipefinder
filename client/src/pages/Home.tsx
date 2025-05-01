@@ -61,8 +61,11 @@ const Home = () => {
           setRecipes(randomRecipes);
         });
       }
+    } else if (filter === "Rice") {
+      // Rice is an ingredient, not a category
+      searchRecipes(filter);
     } else {
-      // For specific ingredients (Chicken, Beef, Rice)
+      // For categories like Chicken and Beef
       getRecipesByCategory(filter);
     }
   };
