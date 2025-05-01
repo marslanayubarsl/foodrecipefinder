@@ -31,7 +31,7 @@ const Hero = ({ onSearch }: HeroProps) => {
           transition={{ duration: 0.5 }}
         >
           <motion.h1 
-            className="font-accent text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-sky-300"
+            className="font-accent text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-blue-500"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
@@ -39,7 +39,7 @@ const Hero = ({ onSearch }: HeroProps) => {
             Find Delicious Recipes
           </motion.h1>
           <motion.p 
-            className="text-lg md:text-xl mb-8 text-sky-200"
+            className="text-lg md:text-xl mb-8 text-blue-400"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -61,11 +61,11 @@ const Hero = ({ onSearch }: HeroProps) => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            <span className="text-sky-200 self-center mr-2">Popular:</span>
+            <span className="text-blue-400 self-center mr-2">Popular:</span>
             {popularIngredients.map((ingredient, index) => (
               <motion.button 
                 key={ingredient}
-                className="bg-sky-900/50 hover:bg-sky-800/60 px-3 py-1 rounded-full text-sm text-sky-200 backdrop-blur-sm transition-colors duration-200"
+                className="bg-blue-900/50 hover:bg-blue-800/60 px-3 py-1 rounded-full text-sm text-blue-300 backdrop-blur-sm transition-colors duration-200"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => handlePopularClick(ingredient)}
