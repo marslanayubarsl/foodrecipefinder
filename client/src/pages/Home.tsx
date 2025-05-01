@@ -73,6 +73,19 @@ const Home = () => {
     }
   };
 
+  const handleViewCollection = () => {
+    // Set active filter to "All Recipes"
+    setActiveFilter("All Recipes");
+    // Clear any search query
+    setSearchQuery("");
+    // Load random recipes
+    getRandomRecipes(8).then(randomRecipes => {
+      setRecipes(randomRecipes);
+    });
+    // Scroll to the recipes section
+    document.querySelector('.py-12.px-4.container')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   // Initial load
   useEffect(() => {
     // Load Chicken recipes by default
@@ -198,6 +211,7 @@ const Home = () => {
                 image={collection.image}
                 description={collection.description}
                 recipeCount={collection.recipeCount}
+                onViewCollection={handleViewCollection}
               />
             ))}
           </div>

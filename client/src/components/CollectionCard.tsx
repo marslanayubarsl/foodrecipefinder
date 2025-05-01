@@ -6,33 +6,10 @@ interface CollectionCardProps {
   title: string;
   description: string;
   recipeCount: number;
+  onViewCollection: () => void;
 }
 
-const CollectionCard = ({ image, title, description, recipeCount }: CollectionCardProps) => {
-  const [_, setLocation] = useLocation();
-
-  const handleViewCollection = () => {
-    // Navigate to home page
-    setLocation("/");
-    
-    // Since we're using the "All Recipes" button to show all recipes,
-    // we can simulate a click on that filter after navigation
-    // The setActiveFilter and getRandomRecipes will be handled by the Home component
-    
-    // Add a small delay to ensure navigation completes first
-    setTimeout(() => {
-      // Find all buttons and locate the one with 'All Recipes' text
-      const buttons = document.querySelectorAll('button');
-      const allRecipesButton = Array.from(buttons).find(button => 
-        button.textContent?.includes('All Recipes')
-      );
-      
-      if (allRecipesButton) {
-        (allRecipesButton as HTMLButtonElement).click();
-      }
-    }, 100);
-  };
-
+const CollectionCard = ({ image, title, description, recipeCount, onViewCollection }: CollectionCardProps) => {
   return (
     <motion.div 
       className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 group cursor-pointer"
@@ -40,7 +17,7 @@ const CollectionCard = ({ image, title, description, recipeCount }: CollectionCa
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      onClick={handleViewCollection}
+      onClick={onViewCollection}
     >
       <div className="h-40 relative overflow-hidden">
         <img 
@@ -61,7 +38,7 @@ const CollectionCard = ({ image, title, description, recipeCount }: CollectionCa
             whileTap={{ scale: 0.97 }}
             onClick={(e) => {
               e.stopPropagation(); // Prevent triggering the parent onClick
-              handleViewCollection();
+              onViewCollection();
             }}
           >
             <span className="mr-1">View Collection</span>
