@@ -141,7 +141,7 @@ const Home = () => {
           ) : recipes.length > 0 ? (
             recipes.map((recipe: Recipe, index: number) => (
               <RecipeCard 
-                key={recipe.idMeal} 
+                key={`${recipe.idMeal}-${index}`} 
                 recipe={recipe} 
                 index={index}
                 toggleFavorite={toggleFavorite}

@@ -53,22 +53,6 @@ const Footer = () => {
               <li><a href="#" className="text-gray-400 hover:text-primary transition-colors">Lentils</a></li>
             </ul>
           </div>
-          
-          <div className="bg-blue-600/20 p-6 rounded-xl shadow-lg border border-blue-300/30 backdrop-blur-sm">
-            <h3 className="font-heading font-semibold text-lg mb-4 text-white">Newsletter</h3>
-            <p className="text-gray-200 mb-4">Subscribe to get the latest recipes and cooking tips.</p>
-            <div className="flex">
-              <input 
-                type="email" 
-                className="flex-grow px-4 py-3 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-dark shadow-inner border border-blue-200 bg-white/95" 
-                placeholder="Your email" 
-              />
-              <button className="bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-r-lg transition-colors flex items-center font-medium shadow-md">
-                <span className="mr-2 hidden sm:inline">Subscribe</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-              </button>
-            </div>
-          </div>
         </div>
         
         <div className="border-t border-gray-800 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center">
