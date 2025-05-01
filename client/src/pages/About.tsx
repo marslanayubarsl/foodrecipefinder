@@ -134,9 +134,9 @@ const About = () => {
           <Heading as="h2" size="md" className="mb-8">Join Our Community</Heading>
           <p className="text-gray-700 max-w-2xl mx-auto mb-6">Stay updated with the latest recipes, cooking tips, and features by subscribing to our newsletter.</p>
           <div className="max-w-md mx-auto">
-            <div className="flex">
+            <div className="flex items-stretch">
               <input type="email" className="flex-grow px-4 py-3 rounded-l-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Your email address" />
-              <Button className="rounded-l-none">Subscribe</Button>
+              <Button className="rounded-l-none h-full py-3 px-6">Subscribe</Button>
             </div>
           </div>
           <div className="mt-8 flex justify-center space-x-6">
