@@ -7,22 +7,23 @@ interface SearchBarProps {
 }
 
 const SearchBar = ({ onSearch, className = "" }: SearchBarProps) => {
-  const [searchQuery, setSearchQuery] = useState("");
+  const [inputValue, setInputValue] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (searchQuery.trim()) {
-      onSearch(searchQuery);
+    if (inputValue.trim()) {
+      onSearch(inputValue);
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setSearchQuery(value);
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = e.target.value;
+    setInputValue(newValue);
+    console.log("Input value changed to:", newValue);
     
-    // Trigger search on input changes
-    if (value.trim()) {
-      onSearch(value);
+    // Optional: Trigger search on input changes
+    if (newValue.trim()) {
+      onSearch(newValue);
     }
   };
 
@@ -30,10 +31,11 @@ const SearchBar = ({ onSearch, className = "" }: SearchBarProps) => {
     <form onSubmit={handleSubmit} className={`relative ${className}`}>
       <input 
         type="text" 
-        value={searchQuery}
-        onChange={handleChange}
+        value={inputValue}
+        onChange={handleInputChange}
         className="w-full px-6 py-4 pr-12 text-dark dark:text-white bg-white dark:bg-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-primary shadow-lg font-medium placeholder:text-gray-500 dark:placeholder:text-gray-400" 
         placeholder="Enter an ingredient (e.g., 'chicken', 'tomato')"
+        autoComplete="off"
         aria-label="Search for recipes by ingredient"
       />
       <motion.button 
