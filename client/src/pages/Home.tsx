@@ -55,15 +55,12 @@ const Home = () => {
     
     // Handle different filter options
     if (filter === "All Recipes") {
-      // If returning to "All Recipes" and there's a search query, use it
-      if (searchQuery) {
-        searchRecipes(searchQuery);
-      } else {
-        // Otherwise load some random recipes
-        getRandomRecipes(8).then(randomRecipes => {
-          setRecipes(randomRecipes);
-        });
-      }
+      // Always load random recipes when "All Recipes" is clicked
+      // This resets any previous search or category filtering
+      setSearchQuery(""); // Clear the search query state
+      getRandomRecipes(8).then(randomRecipes => {
+        setRecipes(randomRecipes);
+      });
     } else if (filter === "Fish") {
       // Fish should use Seafood category
       getRecipesByCategory("Seafood");
