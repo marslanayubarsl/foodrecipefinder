@@ -88,8 +88,8 @@ const Navbar = () => {
               <motion.div 
                 key={link.path}
                 onClick={() => window.location.href = link.path}
-                className={`font-heading font-medium transition-colors duration-200 cursor-pointer ${
-                  location === link.path ? "text-primary" : "hover:text-primary"
+                className={`font-heading font-medium transition-colors duration-200 cursor-pointer nav-link ${
+                  location === link.path ? "text-primary active" : "hover:text-primary"
                 }`}
                 initial={{ opacity: 0, y: -30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -99,7 +99,7 @@ const Navbar = () => {
                   damping: 20, 
                   delay: 0.4 + (index * 0.1) 
                 }}
-                whileHover={{ y: -4, color: "#ff6b6b" }}
+                whileHover={{ color: "#ff6b6b" }}
                 whileTap={{ y: 0, scale: 0.95 }}
               >
                 {link.name}
@@ -167,8 +167,8 @@ const Navbar = () => {
             {navLinks.map((link, index) => (
               <motion.div 
                 key={link.path}
-                className={`block py-2 font-heading font-medium cursor-pointer ${
-                  location === link.path ? "text-primary" : ""
+                className={`block py-2 font-heading font-medium cursor-pointer nav-link ${
+                  location === link.path ? "text-primary active" : ""
                 }`}
                 onClick={() => {
                   window.location.href = link.path;
@@ -182,7 +182,7 @@ const Navbar = () => {
                   stiffness: 300,
                   delay: 0.1 + (index * 0.08)
                 }}
-                whileHover={{ x: 5 }}
+                whileHover={{ color: "#ff6b6b" }}
                 whileTap={{ scale: 0.95 }}
               >
                 {link.name}

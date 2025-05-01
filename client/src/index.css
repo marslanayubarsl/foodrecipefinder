@@ -155,6 +155,45 @@
     animation: float 6s ease-in-out infinite;
   }
   
+  /* Navbar link hover effect - beautiful underline */
+  .nav-link {
+    position: relative;
+  }
+  
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #0078FF, #ff6b6b);
+    transition: width 0.3s ease;
+    box-shadow: 0 2px 4px rgba(255, 107, 107, 0.3);
+    border-radius: 1px;
+    opacity: 0;
+  }
+  
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    width: 100%;
+    opacity: 1;
+  }
+  
+  /* Mobile nav link specific effect */
+  @media (max-width: 768px) {
+    .nav-link::after {
+      height: 1px;
+      bottom: -2px;
+      background: linear-gradient(90deg, rgba(255,107,107,0), rgba(255,107,107,1), rgba(255,107,107,0));
+      box-shadow: 0 0 8px rgba(255, 107, 107, 0.6);
+    }
+    
+    .nav-link:hover {
+      text-shadow: 0 0 10px rgba(255, 107, 107, 0.4);
+    }
+  }
+  
   .animate-spin {
     animation: spin 12s linear infinite;
   }
