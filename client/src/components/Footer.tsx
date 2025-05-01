@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { Facebook, Twitter, Instagram, AtSign } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -15,17 +16,17 @@ const Footer = () => {
             </div>
             <p className="text-gray-400 mb-4">Discover delicious recipes with ingredients you already have in your kitchen.</p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-primary transition-colors">
-                <i className="fab fa-facebook-f"></i>
+              <a href="#" className="bg-gray-800/80 p-2 rounded-full text-gray-400 hover:text-blue-400 hover:bg-gray-700 transition-all">
+                <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-primary transition-colors">
-                <i className="fab fa-twitter"></i>
+              <a href="#" className="bg-gray-800/80 p-2 rounded-full text-gray-400 hover:text-blue-400 hover:bg-gray-700 transition-all">
+                <Twitter className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-primary transition-colors">
-                <i className="fab fa-instagram"></i>
+              <a href="#" className="bg-gray-800/80 p-2 rounded-full text-gray-400 hover:text-pink-400 hover:bg-gray-700 transition-all">
+                <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-primary transition-colors">
-                <i className="fab fa-pinterest-p"></i>
+              <a href="#" className="bg-gray-800/80 p-2 rounded-full text-gray-400 hover:text-blue-400 hover:bg-gray-700 transition-all">
+                <AtSign className="w-5 h-5" />
               </a>
             </div>
           </div>
@@ -44,26 +45,26 @@ const Footer = () => {
           <div>
             <h3 className="font-heading font-semibold text-lg mb-4">Categories</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-primary transition-colors">Breakfast</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-primary transition-colors">Lunch</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-primary transition-colors">Dinner</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-primary transition-colors">Desserts</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-primary transition-colors">Chicken</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-primary transition-colors">Beef</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-primary transition-colors">Rice</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-primary transition-colors">Seafood</a></li>
               <li><a href="#" className="text-gray-400 hover:text-primary transition-colors">Vegetarian</a></li>
             </ul>
           </div>
           
-          <div>
-            <h3 className="font-heading font-semibold text-lg mb-4">Newsletter</h3>
-            <p className="text-gray-400 mb-4">Subscribe to get the latest recipes and cooking tips.</p>
+          <div className="bg-blue-600/20 p-6 rounded-xl shadow-lg border border-blue-300/30 backdrop-blur-sm">
+            <h3 className="font-heading font-semibold text-lg mb-4 text-white">Newsletter</h3>
+            <p className="text-gray-200 mb-4">Subscribe to get the latest recipes and cooking tips.</p>
             <div className="flex">
               <input 
                 type="email" 
-                className="flex-grow px-4 py-2 rounded-l-lg focus:outline-none focus:ring-1 focus:ring-primary text-dark" 
+                className="flex-grow px-4 py-3 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-dark shadow-inner border border-blue-200 bg-white/95" 
                 placeholder="Your email" 
               />
-              <button className="bg-primary hover:bg-primary/90 px-6 py-2 rounded-r-lg transition-colors flex items-center font-medium">
+              <button className="bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-r-lg transition-colors flex items-center font-medium shadow-md">
                 <span className="mr-2 hidden sm:inline">Subscribe</span>
-                <i className="fas fa-paper-plane"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
               </button>
             </div>
           </div>
