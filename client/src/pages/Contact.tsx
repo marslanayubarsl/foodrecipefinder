@@ -241,7 +241,7 @@ const Contact = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <div className="bg-white rounded-xl overflow-hidden shadow-md h-96">
+          <div className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md h-96">
             <MapContainer 
               center={[40.7128, -74.0060]} 
               zoom={13} 
@@ -274,35 +274,35 @@ const Contact = () => {
           <Heading as="h2" size="md" className="mb-8 text-center">Frequently Asked Questions</Heading>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <motion.div 
-              className="bg-white p-6 rounded-xl shadow-md"
+              className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md"
               whileHover={{ y: -5 }}
             >
               <h3 className="font-heading font-semibold text-lg mb-3">How do I save my favorite recipes?</h3>
-              <p className="text-gray-700">You can save recipes by clicking the heart icon on any recipe card or recipe detail page. Access your saved recipes anytime from your profile.</p>
+              <p className="text-gray-700 dark:text-gray-300">You can save recipes by clicking the heart icon on any recipe card or recipe detail page. Access your saved recipes anytime from your profile.</p>
             </motion.div>
             
             <motion.div 
-              className="bg-white p-6 rounded-xl shadow-md"
+              className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md"
               whileHover={{ y: -5 }}
             >
               <h3 className="font-heading font-semibold text-lg mb-3">Can I submit my own recipes?</h3>
-              <p className="text-gray-700">Yes! We welcome community contributions. Simply create an account and use the "Submit Recipe" feature in your profile dashboard.</p>
+              <p className="text-gray-700 dark:text-gray-300">Yes! We welcome community contributions. Simply create an account and use the "Submit Recipe" feature in your profile dashboard.</p>
             </motion.div>
             
             <motion.div 
-              className="bg-white p-6 rounded-xl shadow-md"
+              className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md"
               whileHover={{ y: -5 }}
             >
               <h3 className="font-heading font-semibold text-lg mb-3">How accurate are the cooking times?</h3>
-              <p className="text-gray-700">Cooking times are estimates based on average conditions. They may vary depending on your equipment and experience.</p>
+              <p className="text-gray-700 dark:text-gray-300">Cooking times are estimates based on average conditions. They may vary depending on your equipment and experience.</p>
             </motion.div>
             
             <motion.div 
-              className="bg-white p-6 rounded-xl shadow-md"
+              className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md"
               whileHover={{ y: -5 }}
             >
               <h3 className="font-heading font-semibold text-lg mb-3">Are there options for dietary restrictions?</h3>
-              <p className="text-gray-700">Yes, you can filter recipes by various dietary needs including vegetarian, vegan, gluten-free, dairy-free, and more.</p>
+              <p className="text-gray-700 dark:text-gray-300">Yes, you can filter recipes by various dietary needs including vegetarian, vegan, gluten-free, dairy-free, and more.</p>
             </motion.div>
           </div>
         </motion.div>
